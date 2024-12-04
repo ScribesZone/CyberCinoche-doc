@@ -29,253 +29,99 @@ The use case model describes the system from a functional perspective. It includ
 
 **UsecaseDiagram**
 
-![diagram](../diagrams/AAAAAAGEs!6HkbHYbDg=.jpeg)
+![diagram](diagrams/AAAAAAGEs!6HkbHYbDg=.jpeg)
 
 
 **ImplementationDiagram**
 
-![diagram](../diagrams/AAAAAAGTXWW35h793zE=.jpeg)
+![diagram](diagrams/AAAAAAGTXWW35h793zE=.jpeg)
 
 ## FLOW INFORMATION DIAGRAMS
 
 
 **PassFlowDiagram**
 
-![diagram](../diagrams/AAAAAAGE!XNWlhkPtM4=.jpeg)
+![diagram](diagrams/AAAAAAGE!XNWlhkPtM4=.jpeg)
 
-
-## actor Clerk
-
-```
-actor Clerk inherits from Employee
-    << internal >>
-    usescase ExtendAPass
-```
-
-
-## actor Collaborator
+## ACTORS 
 
 ```
-actor Collaborator
-    << internal >>
-```
 
-
-## actor Controler
-
-```
-actor Controler inherits from Employee
-    << internal >>
-    usescase ControlTickets
-```
-
-
-## actor Employee
-
-```
-actor Employee inherits from Collaborator
-    << internal >>
-```
-
-
-## actor Manager
-
-```
 actor Manager inherits from Collaborator
     << internal >>
-    usescase EvaluateASolidarityPass
-    usescase ManageMovies
-    usescase ManageShowings
-```
 
-
-## actor President
-
-```
 actor President inherits from Collaborator
     << internal >>
-    usescase BuySomeTickets
-    usescase CheckTheProgram
-    usescase ManageCinemas
-    usescase ManageMovies
-    usescase PickupTickets
-    usescase SelectMovies
-```
 
+actor Controler inherits from Employee
+    << internal >>
 
-## actor Spectator
+actor Clerk inherits from Employee
+    << internal >>
 
-```
+actor Collaborator
+    << internal >>
+
+actor Employee inherits from Collaborator
+    << internal >>
+
 actor Spectator
     << external >>
-    usescase BuySomeTickets
-    usescase CheckTheProgram
-    usescase PickupTickets
+
+
 ```
 
-
-
-
-## system CyberCinoche
+## (SUB)SYSTEMS AND USECASES
 
 ```
 system CyberCinoche
+
     subsystem Backoffice
+
+        usecase PickupTickets
+            actors President, Spectator
+
+        usecase ControlTickets
+            actors Controler
+
+        usecase ExtendAPass
+            actors Clerk
+
+        usecase SellAPass
+            actors 
+
+        usecase SellATicket
+            actors 
+
+        usecase EvaluateASolidarityPass
+            actors Manager
+
+        usecase ManageShowings
+            actors Manager
+
+        usecase SelectMovies
+            actors President
+
+        usecase ManageMovies
+            actors Manager, President
+
+        usecase ManageCinemas
+            actors President
+
+
     subsystem Frontoffice
 
-    -- CyberCinoche is the software system to be built for the Cinoche company.
-    -- The "Cinoche" company is a unique cinema chain with a socially responsible
-    -- mission. Rather than maximizing profits, Cinoche aims to foster social
-    -- connections by offering "solidarity passes" to disadvantaged groups, such as
-    -- isolated students, homeless individuals, migrants, etc. Most viewers pay standard
-    -- ticket prices, and the resulting profits are used to subsidize solidarity
-    -- pricing.
-    -- Cinoche's programming is also distinctive. Instead of screening the latest
-    -- blockbuster releases, which are often expensive, its cinemas focus on films
-    -- organized around specific themes—such as retrospectives on actors like Brad Pitt
-    -- or seasons highlighting lesser-known talent. These themes and film selections are
-    -- collaboratively decided by the cinema managers.
-    -- While Cinoche operates like a typical cinema chain in many ways, its associative
-    -- structure unites independent cinemas with a shared purpose: inclusivity over
-    -- profitability. 
-```
+        usecase BuySomeTickets
+            actors President, Spectator
 
-## subsystem Backoffice
+        usecase CheckTheProgram
+            actors President, Spectator
+
+        usecase RequestAPass
+            actors Spectator
+
 
 ```
-subsystem Backoffice
-    system CyberCinoche
-    usecase PickupTickets
-    usecase ControlTickets
-    usecase ExtendAPass
-    usecase SellAPass
-    usecase SellATicket
-    usecase EvaluateASolidarityPass
-    usecase ManageShowings
-    usecase SelectMovies
-    usecase ManageMovies
-    usecase ManageCinemas
-
-```
-
-## subsystem Frontoffice
-
-```
-subsystem Frontoffice
-    system CyberCinoche
-    usecase BuySomeTickets
-    usecase CheckTheProgram
-    usecase RequestAPass
-
-```
-
-
-## usecase BuySomeTickets
-```
-usecase BuySomeTickets
-    system Frontoffice
-    actor President
-    actor Spectator
-
-```
-
-## usecase CheckTheProgram
-```
-usecase CheckTheProgram
-    system Frontoffice
-    actor President
-    actor Spectator
-
-```
-
-## usecase ControlTickets
-```
-usecase ControlTickets
-    system Backoffice
-    actor Controler
-
-```
-
-## usecase EvaluateASolidarityPass
-```
-usecase EvaluateASolidarityPass
-    system Backoffice
-    actor Manager
-
-```
-
-## usecase ExtendAPass
-```
-usecase ExtendAPass
-    system Backoffice
-    actor Clerk
-
-```
-
-## usecase ManageCinemas
-```
-usecase ManageCinemas
-    system Backoffice
-    actor President
-
-```
-
-## usecase ManageMovies
-```
-usecase ManageMovies
-    system Backoffice
-    actor Manager
-    actor President
-
-```
-
-## usecase ManageShowings
-```
-usecase ManageShowings
-    system Backoffice
-    actor Manager
-
-```
-
-## usecase PickupTickets
-```
-usecase PickupTickets
-    system Backoffice
-    actor President
-    actor Spectator
-
-```
-
-## usecase RequestAPass
-```
-usecase RequestAPass
-    system Frontoffice
-    actor Spectator
-
-```
-
-## usecase SelectMovies
-```
-usecase SelectMovies
-    system Backoffice
-    actor President
-
-```
-
-## usecase SellAPass
-```
-usecase SellAPass
-    system Backoffice
-
-```
-
-## usecase SellATicket
-```
-usecase SellATicket
-    system Backoffice
-
-```
-
 
 
 
@@ -288,7 +134,7 @@ The domain model describes the main concepts of the domain. It includes enumerat
 
 **DomainDiagram**
 
-![diagram](../diagrams/AAAAAAGE!SzqDEdGNd4=.jpeg)
+![diagram](diagrams/AAAAAAGE!SzqDEdGNd4=.jpeg)
 
 
 ## enumeration Genre
@@ -333,6 +179,111 @@ enumeration Role
 
 
 
+## class Showing
+```
+class Showing
+    -- fr=séance
+    -- Session during which a given movie is screened in a theater.
+    attributes
+        / title : String {id}
+            -- The name of the showing composed of the screen following by the movie name and
+            -- the schedule.
+            -- ## Constraints
+            -- /title = self.screen.name + " " + self.movie.name + " " + schedule
+        schedule : DateTime
+            -- Start of the session as displayed to the spectators on the application, web site
+            -- or inforlmation board. 
+        state : ShowingState
+        / poster : Image
+            -- ## Constraints
+            -- /poster = self.movie.poster
+        / nbOfSeatsInTheScreen : Integer
+            -- ## Constraints
+            -- /nbOfSeatsInTheScreen = self.screen.nbOfSeats
+        / nbOfAvailableSeats : Integer
+            -- ## Constraints
+            -- /nbOfAvailableSeats = self.nbOfSeatsInTheScreen - self.nbOfTickets
+        / ticketPrice : Real
+            -- ## Constraints
+            -- /ticketPrice = self.screen.ticketPrice
+        / nbOfTickets : Integer
+            -- ## Constraints
+            -- /nbOfTickets = self.tickets-size()
+
+    roles
+        composite screen : Screen[1]
+        tickets : Ticket[*]
+        movie : Movie[1]
+
+
+    states ShowingState
+        movable
+        canceled
+        scheduled
+        ofTheWeek
+        ofTheDay
+        inProgress
+        over
+
+```
+
+
+**ShowingStateDiagram**
+
+![diagram](diagrams/AAAAAAGEsJoS3mBpIO8=.jpeg)
+
+## class Ticket
+```
+class Ticket
+    -- Tickets allow a single spectator entry to a screening room to watch a movie.  Due
+    -- to Cinoche's community-focused mission, tickets are available at very low prices
+    -- and may even be free for select audiences. However tickets are non-refundable
+    -- under any circumstances.
+    attributes
+        / number : String {id}
+            -- ## Constraints
+            -- -- A pass ticket has this format :  A34.8
+            -- -- A regular ticket has this format : X234
+            -- /number = 
+            -- IF self.pass.notEmpty()
+            -- THEN self.pass + '.' + self.id 
+            -- ELSE 'X' + self.id  ENDIF
+        id : Integer
+            -- An autonumberd id : tickets are numbered 1, 2, 3, etc. Each time a new ticket is
+            -- created the id is incremented.
+            -- ## Implementation
+            -- Use the "autonumber" data typ in AirTable.
+        state : TicketState
+        / fullPrice : Real
+            -- ## constraints
+            -- /fullPrice = self.showing.ticketPrice
+        / discountRate : Integer
+            -- ## Constraints
+            -- /discountRate = self.pass.discount -- can be undefined
+        / price : Real
+            -- ## Constraints
+            -- /price  = self.fullPrice - (100-self.dicountRate) 
+            -- -- Percentages are stored as a coefficient < 1 in AirTable.
+            -- -- Therefore, 100 should be replaced with 1.
+
+    roles
+        composite showing : Showing[1]
+        pass : Pass[0..1]
+            -- A ticket may have been purchased with or without a pass. 
+
+
+    states TicketState
+        purchased
+        controled
+        unused
+
+```
+
+
+**TicketStateDiagram**
+
+![diagram](diagrams/AAAAAAGE91PRb1G%2BrFs=.jpeg)
+
 ## class Celebrity
 ```
 class Celebrity
@@ -372,114 +323,6 @@ class Celebrity
         directedMovies : Movie[*]
             -- Selection of movies in which the celebrity acted as the director. Only films
             -- deemed relevant by Cinoche are listed.
-
-
-```
-
-## class Cinema
-```
-class Cinema
-    -- fr=Cinéma
-    -- One of the cinema of the Cincoche consortium.
-    attributes
-        name : String {id}
-        address : String
-        city : String
-        ticketPrice : Real
-        image : Image
-        / nbOfScreens : Integer
-            -- fr=nbDeSalles
-            -- ## Constraints
-            -- /nbOfScreens = self.screens->size()
-        / nbOfSeats : Integer
-            -- fr=nbDePlaces
-            -- ## Constraints
-            -- /nbOfSeats = self.screens->sum()
-        / nbOfAvailableSeats : Integer
-            -- fr=nbDePlacesDisponibles
-            -- ## Constraints
-            -- /nbOfFreeSeats = self.screen->select(state=active).nbOfSeats->sum()
-        / nbOfTickets : Integer
-            -- ## Constraints
-            -- /nbOfTickets = self.screens.nbOfTickets->sum()
-
-    roles
-        composite cinoche : Cinoche[1]
-        screens : Screen[*]
-        manager : Collaborator[1]
-        employee : Collaborator[*]
-        passes : Pass[*]
-            -- All passes created within the context of the given cinema. All passes are listed
-            -- regardless of their state. Passes are added but never removed, as they are simply
-            -- marked 'expired' when finished.
-
-
-```
-
-## class Cinoche
-```
-class Cinoche
-    -- Cinoche is an associative structure that brings together independent cinemas. The
-    -- unique aspect of Cinoche is that no film is shown upon its initial release.
-    -- Instead, cinema managers come together to define a theme and select a number of
-    -- films based on a specific theme, such as a season featuring films with Angelina
-    -- Jolie or Brad Pitt, or featuring lesser-known actors and actresses.  The list of
-    -- movies to be shown is selected in a collaborative way. One of the most notable
-    -- features of Cinoche is that this organization provides passes for people with
-    -- limited means: unemployed individuals, isolated students, migrants, homeless
-    -- individuals, etc. CyberCinoche's mission is to be inclusive rather than
-    -- profitable.
-    attributes
-        name : String {id}
-        3DSurcharge : Real
-        standardDiscount : Integer
-            -- Percentage discount for standard passes.
-            -- Currently, this percentage is 10%.
-            -- NOTE: This attribute is currently not in use.
-        / nbOfCinemas : Integer
-            -- ## Constraints
-            -- /nbOfCinemas = self.cinemas->size()
-        / nbOfScreens : Integer
-            -- ## Constraints
-            -- /nbOfScreens = self.cinemas.nbOfScreens->sum()
-        / nbOfSeats : Integer
-            -- ## Constraints
-            -- /nbOfSeats = self.cinemas.nbOfSeats->sum()
-        / nbOfAvailableSeats : Integer
-            -- ## Constraints
-            -- /nbOfAvailableSeats = self.cinemas.nbOfAvailableSeats->sum()
-        / availabilityRate : Integer
-            -- ## Constraints
-            -- /availabiltyRate =  self.nbOfAvaiableSeats / nbOfSeats * 100
-        / ticketPriceAverage : Real
-            -- ## Constraints
-            -- /ticketPriceAverage = self.cinema.price->avg()
-        / nbOfTickets : Integer
-            -- ## Constraints
-            -- /nbOfTickets = self.cinemas.nbOfTickets->sum()
-
-    roles
-        cinemas : Cinema[*]
-
-
-```
-
-## class Collaborator
-```
-class Collaborator
-    -- ollaborators are employees of Cinoche cinemas, including one manager for each
-    -- location. Additionally, each year a single "president" is elected from among all
-    -- collaborators, whether they are managers or not. The president’s role is
-    -- primarily to define themes for the upcoming season and to make final decisions in
-    -- the movie selection process.
-    attributes
-        email : Email
-        name : String
-        role : Role
-
-    roles
-        managedCinema : Cinema[0..1]
-        employer : Cinema[0..1]
 
 
 ```
@@ -538,7 +381,27 @@ class Movie
 
 **MovieStateDiagram**
 
-![diagram](../diagrams/AAAAAAGEsG7F4qfe0Ds=.jpeg)
+![diagram](diagrams/AAAAAAGEsG7F4qfe0Ds=.jpeg)
+
+## class Collaborator
+```
+class Collaborator
+    -- ollaborators are employees of Cinoche cinemas, including one manager for each
+    -- location. Additionally, each year a single "president" is elected from among all
+    -- collaborators, whether they are managers or not. The president’s role is
+    -- primarily to define themes for the upcoming season and to make final decisions in
+    -- the movie selection process.
+    attributes
+        email : Email
+        name : String
+        role : Role
+
+    roles
+        managedCinema : Cinema[0..1]
+        employer : Cinema[0..1]
+
+
+```
 
 ## class Pass
 ```
@@ -639,7 +502,55 @@ class Pass
 
 **PassStateDiagram**
 
-![diagram](../diagrams/AAAAAAGE7GCFomTrDXk=.jpeg)
+![diagram](diagrams/AAAAAAGE7GCFomTrDXk=.jpeg)
+
+## class Cinoche
+```
+class Cinoche
+    -- Cinoche is an associative structure that brings together independent cinemas. The
+    -- unique aspect of Cinoche is that no film is shown upon its initial release.
+    -- Instead, cinema managers come together to define a theme and select a number of
+    -- films based on a specific theme, such as a season featuring films with Angelina
+    -- Jolie or Brad Pitt, or featuring lesser-known actors and actresses.  The list of
+    -- movies to be shown is selected in a collaborative way. One of the most notable
+    -- features of Cinoche is that this organization provides passes for people with
+    -- limited means: unemployed individuals, isolated students, migrants, homeless
+    -- individuals, etc. CyberCinoche's mission is to be inclusive rather than
+    -- profitable.
+    attributes
+        name : String {id}
+        3DSurcharge : Real
+        standardDiscount : Integer
+            -- Percentage discount for standard passes.
+            -- Currently, this percentage is 10%.
+            -- NOTE: This attribute is currently not in use.
+        / nbOfCinemas : Integer
+            -- ## Constraints
+            -- /nbOfCinemas = self.cinemas->size()
+        / nbOfScreens : Integer
+            -- ## Constraints
+            -- /nbOfScreens = self.cinemas.nbOfScreens->sum()
+        / nbOfSeats : Integer
+            -- ## Constraints
+            -- /nbOfSeats = self.cinemas.nbOfSeats->sum()
+        / nbOfAvailableSeats : Integer
+            -- ## Constraints
+            -- /nbOfAvailableSeats = self.cinemas.nbOfAvailableSeats->sum()
+        / availabilityRate : Integer
+            -- ## Constraints
+            -- /availabiltyRate =  self.nbOfAvaiableSeats / nbOfSeats * 100
+        / ticketPriceAverage : Real
+            -- ## Constraints
+            -- /ticketPriceAverage = self.cinema.price->avg()
+        / nbOfTickets : Integer
+            -- ## Constraints
+            -- /nbOfTickets = self.cinemas.nbOfTickets->sum()
+
+    roles
+        cinemas : Cinema[*]
+
+
+```
 
 ## class Screen
 ```
@@ -680,112 +591,47 @@ class Screen
 
 **ScreenStateDiagram**
 
-![diagram](../diagrams/AAAAAAGEr%2BuJs92Ta2w=.jpeg)
+![diagram](diagrams/AAAAAAGEr%2BuJs92Ta2w=.jpeg)
 
-## class Showing
+## class Cinema
 ```
-class Showing
-    -- fr=séance
-    -- Session during which a given movie is screened in a theater.
+class Cinema
+    -- fr=Cinéma
+    -- One of the cinema of the Cincoche consortium.
     attributes
-        / title : String {id}
-            -- The name of the showing composed of the screen following by the movie name and
-            -- the schedule.
+        name : String {id}
+        address : String
+        city : String
+        ticketPrice : Real
+        image : Image
+        / nbOfScreens : Integer
+            -- fr=nbDeSalles
             -- ## Constraints
-            -- /title = self.screen.name + " " + self.movie.name + " " + schedule
-        schedule : DateTime
-            -- Start of the session as displayed to the spectators on the application, web site
-            -- or inforlmation board. 
-        state : ShowingState
-        / poster : Image
+            -- /nbOfScreens = self.screens->size()
+        / nbOfSeats : Integer
+            -- fr=nbDePlaces
             -- ## Constraints
-            -- /poster = self.movie.poster
-        / nbOfSeatsInTheScreen : Integer
-            -- ## Constraints
-            -- /nbOfSeatsInTheScreen = self.screen.nbOfSeats
+            -- /nbOfSeats = self.screens->sum()
         / nbOfAvailableSeats : Integer
+            -- fr=nbDePlacesDisponibles
             -- ## Constraints
-            -- /nbOfAvailableSeats = self.nbOfSeatsInTheScreen - self.nbOfTickets
-        / ticketPrice : Real
-            -- ## Constraints
-            -- /ticketPrice = self.screen.ticketPrice
+            -- /nbOfFreeSeats = self.screen->select(state=active).nbOfSeats->sum()
         / nbOfTickets : Integer
             -- ## Constraints
-            -- /nbOfTickets = self.tickets-size()
+            -- /nbOfTickets = self.screens.nbOfTickets->sum()
 
     roles
-        composite screen : Screen[1]
-        tickets : Ticket[*]
-        movie : Movie[1]
+        composite cinoche : Cinoche[1]
+        screens : Screen[*]
+        manager : Collaborator[1]
+        employee : Collaborator[*]
+        passes : Pass[*]
+            -- All passes created within the context of the given cinema. All passes are listed
+            -- regardless of their state. Passes are added but never removed, as they are simply
+            -- marked 'expired' when finished.
 
-
-    states ShowingState
-        movable
-        canceled
-        scheduled
-        ofTheWeek
-        ofTheDay
-        inProgress
-        over
 
 ```
-
-
-**ShowingStateDiagram**
-
-![diagram](../diagrams/AAAAAAGEsJoS3mBpIO8=.jpeg)
-
-## class Ticket
-```
-class Ticket
-    -- Tickets allow a single spectator entry to a screening room to watch a movie.  Due
-    -- to Cinoche's community-focused mission, tickets are available at very low prices
-    -- and may even be free for select audiences. However tickets are non-refundable
-    -- under any circumstances.
-    attributes
-        / number : String {id}
-            -- ## Constraints
-            -- -- A pass ticket has this format :  A34.8
-            -- -- A regular ticket has this format : X234
-            -- /number = 
-            -- IF self.pass.notEmpty()
-            -- THEN self.pass + '.' + self.id 
-            -- ELSE 'X' + self.id  ENDIF
-        id : Integer
-            -- An autonumberd id : tickets are numbered 1, 2, 3, etc. Each time a new ticket is
-            -- created the id is incremented.
-            -- ## Implementation
-            -- Use the "autonumber" data typ in AirTable.
-        state : TicketState
-        / fullPrice : Real
-            -- ## constraints
-            -- /fullPrice = self.showing.ticketPrice
-        / discountRate : Integer
-            -- ## Constraints
-            -- /discountRate = self.pass.discount -- can be undefined
-        / price : Real
-            -- ## Constraints
-            -- /price  = self.fullPrice - (100-self.dicountRate) 
-            -- -- Percentages are stored as a coefficient < 1 in AirTable.
-            -- -- Therefore, 100 should be replaced with 1.
-
-    roles
-        composite showing : Showing[1]
-        pass : Pass[0..1]
-            -- A ticket may have been purchased with or without a pass. 
-
-
-    states TicketState
-        purchased
-        controled
-        unused
-
-```
-
-
-**TicketStateDiagram**
-
-![diagram](../diagrams/AAAAAAGE91PRb1G%2BrFs=.jpeg)
 
 
 
@@ -796,5 +642,5 @@ class Ticket
 
 **ManageCinemasInterfaceDiagram**
 
-![diagram](../diagrams/AAAAAAGE8lXSfzmXuUI=.jpeg)
+![diagram](diagrams/AAAAAAGE8lXSfzmXuUI=.jpeg)
 
